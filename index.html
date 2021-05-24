@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <input type="text" onkeyup="checkDebounce(event)" />
+  </body>
+  <script>
+    function debounced(func, delay) {
+      // console.log("log1", func());
+      let timer;
+      return (args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+    function checkDebounce(event) {
+      debounced(() => logging(event), 300);
+    }
+    function logging() {
+      console.log("log2", event.key);
+    }
+  </script>
+</html>
